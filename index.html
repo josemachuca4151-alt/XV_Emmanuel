@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mis XV | Emmanuel</title>
+    <!-- Fuentes elegantes -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* --- VARIABLES Y CONFIGURACIÓN BASE --- */
+      :root {
+        --bg-color: #0f172a; /* Azul marino profundo */
+        --text-main: #f8fafc; /* Blanco humo */
+        --accent-gold: #d4af37; /* Dorado elegante */
+        --accent-gold-dark: #aa8c2c;
+        --card-bg: rgba(255, 255, 255, 0.05);
+        --font-title: "Cinzel", serif;
+        --font-text: "Montserrat", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #000;
+        font-family: var(--font-text);
+        color: var(--text-main);
+        line-height: 1.6;
+      }
+
+      /* --- CONTENEDOR PRINCIPAL (Simulación Móvil) --- */
+      .app-container {
+        max-width: 480px; /* Ancho de celular */
+        margin: 0 auto;
+        background-color: var(--bg-color);
+        min-height: 100vh;
+        overflow-x: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+      }
+
+      /* --- SECCIONES COMUNES --- */
+      section {
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+      .divider {
+        width: 50px;
+        height: 2px;
+        background-color: var(--accent-gold);
+        margin: 1.5rem auto;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: var(--font-title);
+        font-weight: 600;
+        color: var(--accent-gold);
+      }
+      h1 {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+        margin-bottom: 1rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+      }
+      .highlight {
+        font-weight: 600;
+        color: var(--accent-gold);
+      }
+
+      /* --- PORTADA --- */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background:
+          linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)),
+          url("Documentos/EMA.jpeg") center/cover no-repeat;
+      }
+
+      .hero-date {
+        font-size: 1.2rem;
+        letter-spacing: 3px;
+        margin-top: 1rem;
+      }
+
+      /* --- BOTONES --- */
+      .btn {
+        display: inline-block;
+        background-color: var(--accent-gold);
+        color: var(--bg-color);
+        padding: 12px 24px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        font-family: var(--font-text);
+        font-size: 0.9rem;
+        margin: 10px 0;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        max-width: 300px;
+      }
+      .btn:hover {
+        background-color: var(--accent-gold-dark);
+      }
+      .btn-outline {
+        background-color: transparent;
+        border: 1px solid var(--accent-gold);
+        color: var(--accent-gold);
+      }
+      .btn-outline:hover {
+        background-color: rgba(212, 175, 55, 0.1);
+      }
+
+      /* --- CONTADOR --- */
+      .countdown-container {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 2rem;
+      }
+      .time-box {
+        background: var(--card-bg);
+        padding: 15px 10px;
+        border-radius: 10px;
+        min-width: 70px;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+      }
+      .time-box span {
+        display: block;
+        font-size: 1.8rem;
+        font-family: var(--font-title);
+        color: var(--accent-gold);
+      }
+      .time-box small {
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* --- ITINERARIO (TIMELINE) --- */
+      .timeline {
+        text-align: left;
+        margin-top: 2rem;
+        position: relative;
+        padding-left: 20px;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 1px;
+        background: var(--accent-gold);
+      }
+      .timeline-item {
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -24px;
+        top: 5px;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--accent-gold);
+      }
+      .time {
+        font-weight: 600;
+        color: var(--accent-gold);
+        font-size: 0.9rem;
+      }
+      .event {
+        font-size: 1.1rem;
+      }
+
+      /* --- TARJETAS E IMÁGENES --- */
+      .card {
+        background: var(--card-bg);
+        padding: 2rem;
+        border-radius: 15px;
+        margin: 1.5rem 0;
+        border: 1px solid rgba(212, 175, 55, 0.1);
+      }
+      .photo-placeholder {
+        width: 100%;
+        margin: 1.5rem 0;
+        border-radius: 10px;
+      }
+      .photo-placeholder img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+        display: block;
+      }
+
+      /* --- BOLETOS --- */
+      .ticket-box {
+        border: 2px solid var(--accent-gold);
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-radius: 10px;
+      }
+      .ticket-number {
+        font-size: 3rem;
+        font-family: var(--font-title);
+        color: var(--accent-gold);
+        line-height: 1;
+      }
+
+      /* --- AVISOS IMPORTANTES --- */
+      .rules-list {
+        text-align: left;
+        margin-top: 1.5rem;
+      }
+      .rules-list li {
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        list-style: none;
+        position: relative;
+        padding-left: 20px;
+      }
+      .rules-list li::before {
+        content: "♦";
+        color: var(--accent-gold);
+        position: absolute;
+        left: 0;
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- REPRODUCTOR DE AUDIO OCULTO -->
+    <audio id="bgMusic" loop>
+      <source src="Documentos/CANCION.mp3" type="audio/mpeg" />
+    </audio>
+
+    <div class="app-container">
+      <!-- SECCIÓN 1: PORTADA -->
+      <section
+        class="hero fade-in"
+        style="
+          height: auto;
+          min-height: 100vh;
+          justify-content: flex-start;
+          padding-top: 3rem;
+          padding-bottom: 3rem;
+        "
+      >
+        <h3>MIS XV</h3>
+        <h1>EMMANUEL</h1>
+
+        <!-- Foto principal de Emmanuel -->
+        <div
+          class="photo-placeholder"
+          style="
+            border: none;
+            background: transparent;
+            height: auto;
+            margin: 2rem 0;
+          "
+        >
+          <img
+            src="Documentos/EMA.jpeg"
+            alt="Foto Emmanuel"
+            style="
+              display: block;
+              width: 90%;
+              max-width: 320px;
+              margin: 0 auto;
+              border-radius: 15px;
+              box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+            "
+          />
+        </div>
+
+        <p style="letter-spacing: 2px">RESERVA EL DÍA</p>
+        <div class="hero-date highlight">29 • NOV • 2026</div>
+
+        <button id="playBtn" class="btn btn-outline" style="margin-top: 2rem">
+          ▶ Reproducir mi canción
+        </button>
+
+        <p style="margin-top: 2rem; font-size: 0.85rem; padding: 0 1rem">
+          ¡LLEGARON MIS 15! ACOMPÁÑAME A CELEBRARLO COMO SE DEBE.
+        </p>
+      </section>
+
+      <!-- SECCIÓN 2: MENSAJE Y CONTADOR -->
+      <section class="fade-in">
+        <p style="font-style: italic">
+          "Hay momentos que se atesoran en nuestro corazón para siempre, por
+          esta razón, quiero compartir este momento especial contigo"
+        </p>
+        <div class="divider"></div>
+        <h3>FALTAN</h3>
+        <div class="countdown-container">
+          <div class="time-box">
+            <span id="days">00</span><small>Días</small>
+          </div>
+          <div class="time-box">
+            <span id="hours">00</span><small>Horas</small>
+          </div>
+          <div class="time-box">
+            <span id="minutes">00</span><small>Min</small>
+          </div>
+          <div class="time-box">
+            <span id="seconds">00</span><small>Seg</small>
+          </div>
+        </div>
+        <p style="margin-top: 1rem; letter-spacing: 2px">PARA MI GRAN DÍA</p>
+      </section>
+
+      <!-- SECCIÓN 3: PADRES -->
+      <section
+        class="fade-in"
+        style="background-color: rgba(255, 255, 255, 0.02)"
+      >
+        <p>CON LA BENDICIÓN DE DIOS Y EL AMOR DE MIS PADRES</p>
+        <h3 style="font-size: 1.2rem; margin: 1rem 0">
+          Reyes Ruvalcaba Torres<br />&<br />Cassandra Montserrat Machuca
+        </h3>
+        <div class="divider"></div>
+        <p>Agradecemos su compañía en esta ocasión tan especial.</p>
+        <p class="highlight" style="font-size: 1.1rem; margin-top: 1.5rem">
+          NO SOLO ES MI CUMPLEAÑOS<br />¡ES MI PRIMERA GRAN FIESTA! MIS XV.
+        </p>
+      </section>
+
+      <!-- SECCIÓN 4: RECEPCIÓN -->
+      <section class="fade-in">
+        <h2>RECEPCIÓN</h2>
+        <div
+          class="photo-placeholder"
+          style="border: none; background: transparent; height: auto"
+        >
+          <img
+            src="Documentos/foto de casino.JPG"
+            alt="Quinta Guadalupe Armenta"
+            style="display: block; width: 100%; border-radius: 10px"
+          />
+        </div>
+        <h3 style="font-size: 1.2rem">QUINTA GUADALUPE ARMENTA</h3>
+        <p>07:00 P.M.</p>
+        <p style="font-size: 0.85rem; color: #cbd5e1">
+          Calle Cedros N. 12 Col. Bosques del Centinela,<br />Zapopan, Jalisco
+          CP 45187
+        </p>
+        <a
+          href="https://maps.app.goo.gl/cVuiKcSuAaiR7rJX7"
+          target="_blank"
+          class="btn"
+          >VER UBICACIÓN EN MAPS</a
+        >
+      </section>
+
+      <!-- SECCIÓN 5: ITINERARIO -->
+      <section
+        class="fade-in"
+        style="background-color: rgba(255, 255, 255, 0.02)"
+      >
+        <h2>ITINERARIO</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="time">18:30 HRS</div>
+            <div class="event">Recepción</div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">19:00 HRS</div>
+            <div class="event">Norteño</div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">21:00 HRS</div>
+            <div class="event">Cena</div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">21:30 HRS</div>
+            <div class="event">Vals</div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">22:00 HRS</div>
+            <div class="event">Banda</div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">22:30 HRS</div>
+            <div class="event">Recuerdos</div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">23:00 HRS</div>
+            <div class="event">Pastel</div>
+          </div>
+          <div class="timeline-item">
+            <div class="time">00:00 HRS</div>
+            <div class="event">Fin del evento</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 6: VESTIMENTA Y FOTOS -->
+      <section class="fade-in">
+        <h2>CÓDIGO DE VESTIMENTA</h2>
+        <h3 style="font-size: 1.5rem; margin: 1rem 0">FORMAL</h3>
+
+        <div
+          class="photo-placeholder"
+          style="border: none; background: transparent; height: auto"
+        >
+          <img
+            src="Documentos/CODIGO VESTIMENTA.png"
+            alt="Código de Vestimenta"
+            style="display: block; width: 100%; border-radius: 10px"
+          />
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>ÁLBUM COMPARTIDO</h2>
+        <p>
+          Los momentos que tendré contigo serán muy importantes. Agradezco que
+          me compartas tus fotos y videos en esta carpeta.
+        </p>
+
+        <a
+          href="https://photos.app.goo.gl/Xt1yTASKr8vNHGcK8"
+          target="_blank"
+          class="btn btn-outline"
+          >SUBIR FOTO</a
+        >
+        <br /><br />
+
+        <a
+          href="https://www.instagram.com/emmanuel201168?stkn=MWJ4eHptY3h0azhtag=="
+          target="_blank"
+          style="color: var(--accent-gold); text-decoration: none"
+        >
+          <p>También puedes etiquetarme en Instagram</p>
+          <h3 style="font-size: 1.2rem">@emmanuel201168</h3>
+        </a>
+      </section>
+
+      <!-- SECCIÓN 7: REGALOS -->
+      <section
+        class="fade-in"
+        style="background-color: rgba(255, 255, 255, 0.02)"
+      >
+        <h2>MESA DE REGALOS</h2>
+        <p>
+          Tu compañía es el obsequio más valioso para mí. Si deseas hacerme un
+          regalo, te comparto las opciones que recibiré con aprecio:
+        </p>
+
+        <div class="card">
+          <h3>LLUVIA DE SOBRES</h3>
+          <p style="font-size: 0.85rem; margin-top: 10px">
+            Habrá una caja en la mesa de honor, en donde podrás depositar el
+            sobre.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>REGALO FÍSICO</h3>
+          <div style="margin-top: 10px">
+            <img
+              src="Documentos/regalo.png"
+              alt="Regalo Físico"
+              style="max-width: 100px; margin: 0 auto; display: block"
+            />
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>TRANSFERENCIA</h3>
+          <p style="margin-top: 10px">Banco: <strong>SANTANDER</strong></p>
+          <p>Nombre: <strong>Cassandra Machuca</strong></p>
+          <p>
+            Tarjeta:
+            <strong style="letter-spacing: 1px">5579 1004 3012 1143</strong>
+          </p>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 8: BOLETOS Y CONFIRMACIÓN -->
+      <section class="fade-in">
+        <h2>CONFIRMAR ASISTENCIA</h2>
+        <p>Deseando tu apreciable asistencia</p>
+
+        <div class="ticket-box">
+          <p style="letter-spacing: 2px">HEMOS ASIGNADO</p>
+          <div class="ticket-number" id="boletos-display">1</div>
+          <p style="letter-spacing: 2px">BOLETOS EN TU HONOR</p>
+        </div>
+
+        <p style="font-size: 0.85rem">
+          Tu presencia es muy importante. Te agradecemos confirmar tu asistencia
+          antes del <strong>26 de octubre de 2026</strong>.
+        </p>
+
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSf4CxFleHIqtU69THM4ktWI7PjC6ZXBPvLgcxSclDXqjL3eXw/viewform?usp=dialog"
+          target="_blank"
+          class="btn"
+          >CONFIRMAR POR FORMULARIO</a
+        >
+
+        <a
+          href="https://wa.me/523310898109?text=%C2%A1Hola!%20Muchas%20gracias%20por%20la%20invitaci%C3%B3n.%20Confirmo%20mi%20asistencia%20para%20celebrar%20los%20XV%20de%20Emmanuel.%20Atte:%20"
+          target="_blank"
+          class="btn btn-outline"
+          >CONFIRMAR CON CASSANDRA</a
+        >
+
+        <a
+          href="https://wa.me/523317618204?text=%C2%A1Hola!%20Muchas%20gracias%20por%20la%20invitaci%C3%B3n.%20Confirmo%20mi%20asistencia%20para%20celebrar%20los%20XV%20de%20Emmanuel.%20Atte:%20"
+          target="_blank"
+          class="btn btn-outline"
+          >CONFIRMAR CON EMMANUEL</a
+        >
+
+        <p style="font-size: 0.75rem; color: #cbd5e1; margin-top: 1.5rem">
+          Transcurrida la fecha se cierra lista, con invitados confirmados.<br />
+          La presente invitación es personal e intransferible.
+        </p>
+      </section>
+
+      <!-- SECCIÓN 9: AVISOS IMPORTANTES -->
+      <section
+        class="fade-in"
+        style="background-color: rgba(255, 255, 255, 0.02)"
+      >
+        <h2>AVISOS IMPORTANTES</h2>
+        <ul class="rules-list">
+          <li>
+            Se recomienda llegar puntuales para no perderse ningún momento
+            especial.
+          </li>
+          <li>
+            Al momento de llegar al evento, se te colocará un brazalete por tu
+            boleto asignado.
+          </li>
+          <li>
+            El lugar cuenta con estacionamiento al aire libre, te recomendamos
+            llevar abrigo.
+          </li>
+          <li style="color: #ef4444; font-weight: 600">
+            Nuestro mayor deseo es celebrar en un ambiente seguro y familiar. Si
+            decides consumir bebidas alcohólicas, te pedimos encarecidamente
+            hacerlo con total moderación por respeto a los jóvenes presentes.
+            Evite ser sacado de la fiesta.
+          </li>
+        </ul>
+      </section>
+
+      <!-- SECCIÓN 10: DESPEDIDA -->
+      <section
+        class="hero fade-in"
+        style="
+          height: 60vh;
+          min-height: 60vh;
+          background:
+            linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.9)),
+            url(&quot;Documentos/EMA.jpeg&quot;) center/cover no-repeat;
+        "
+      >
+        <h1>¡NOS VEMOS!</h1>
+      </section>
+    </div>
+
+    <!-- SCRIPTS DE FUNCIONALIDAD -->
+    <script>
+      // 1. LÓGICA DE BOLETOS DINÁMICOS POR URL
+      document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const cantidadBoletos = params.get("boletos") || "1"; // 1 por defecto
+
+        // Actualiza el número en el HTML
+        const display = document.getElementById("boletos-display");
+        if (display) {
+          display.innerText = cantidadBoletos;
+          if (cantidadBoletos === "1") {
+            display.nextElementSibling.innerText = "BOLETO EN TU HONOR";
+          }
+        }
+      });
+
+      // 2. REPRODUCTOR DE MÚSICA
+      const music = document.getElementById("bgMusic");
+      const playBtn = document.getElementById("playBtn");
+      let isPlaying = false;
+
+      if (playBtn && music) {
+        playBtn.addEventListener("click", () => {
+          if (isPlaying) {
+            music.pause();
+            playBtn.innerText = "▶ Reproducir mi canción";
+          } else {
+            music.play();
+            playBtn.innerText = "⏸ Pausar canción";
+          }
+          isPlaying = !isPlaying;
+        });
+      }
+
+      // 3. CUENTA REGRESIVA
+      const countDownDate = new Date("Nov 29, 2026 18:30:00").getTime();
+
+      const x = setInterval(function () {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        if (document.getElementById("days")) {
+          document.getElementById("days").innerHTML =
+            days < 10 ? "0" + days : days;
+          document.getElementById("hours").innerHTML =
+            hours < 10 ? "0" + hours : hours;
+          document.getElementById("minutes").innerHTML =
+            minutes < 10 ? "0" + minutes : minutes;
+          document.getElementById("seconds").innerHTML =
+            seconds < 10 ? "0" + seconds : seconds;
+        }
+
+        if (distance < 0) {
+          clearInterval(x);
+          const container = document.querySelector(".countdown-container");
+          if (container) {
+            container.innerHTML =
+              "<h3 style='color: white;'>¡HA LLEGADO EL DÍA!</h3>";
+          }
+        }
+      }, 1000);
+
+      // 4. ANIMACIONES AL HACER SCROLL
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      document.querySelectorAll(".fade-in").forEach((element) => {
+        observer.observe(element);
+      });
+    </script>
+  </body>
+</html>
